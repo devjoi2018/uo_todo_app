@@ -6,7 +6,7 @@ class HorizontalLargeButtom extends GetView {
   final Color? textColor;
   final bool? outline;
   final Color color;
-  final Function() onPressed;
+  final Function()? onPressed;
 
   /// Boton que se expande horizontalmente tomando el 100% del ancho de la pantalla,
   /// el boton se puede personalizar para mostrarlo con borde o sin borde.
@@ -60,13 +60,13 @@ class HorizontalLargeButtom extends GetView {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(4),
       ),
+      onPressed: onPressed,
       child: Text(
         text,
         style: TextStyle(
           color: textColor ?? _defaultTextColor,
         ),
       ),
-      onPressed: () {},
     );
   }
 }
