@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uptodo_app/app/controllers/start_controller.dart';
+import 'package:uptodo_app/app/routes/app_pages.dart';
+import 'package:uptodo_app/app/ui/pages/global_widgets/custom_app_bar.dart';
 import 'package:uptodo_app/app/ui/pages/global_widgets/horizontal_large_buttom.dart';
 import 'package:uptodo_app/app/utils/custom_color.dart';
 
@@ -8,35 +10,41 @@ class StartPage extends GetView<StartController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomColor.backgroundColor,
-      appBar: AppBar(
-        backgroundColor: CustomColor.backgroundColor,
-        elevation: 0,
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          header(),
-          Padding(
-            padding: const EdgeInsets.only(left: 24, right: 24, bottom: 67),
-            child: Column(
-              children: [
-                HorizontalLargeButtom(
-                  color: CustomColor.purpleColor,
-                  text: 'INICIAR SESIÓN',
-                  onPressed: () {},
+      backgroundColor: CustomColor.primaryColor,
+      appBar: CustomAppBar(),
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: Get.height - Get.statusBarHeight,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              header(),
+              Padding(
+                padding: const EdgeInsets.only(left: 24, right: 24, bottom: 67),
+                child: Column(
+                  children: [
+                    HorizontalLargeButtom(
+                      color: CustomColor.secondaryColor,
+                      text: 'INICIAR SESIÓN',
+                      onPressed: () {
+                        Get.toNamed(Routes.loginPage);
+                      },
+                    ),
+                    const SizedBox(height: 28),
+                    HorizontalLargeButtom(
+                      color: CustomColor.secondaryColor,
+                      text: 'CREAR CUENTA',
+                      outline: true,
+                      onPressed: () {
+                        Get.toNamed(Routes.registerPage);
+                      },
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 28),
-                HorizontalLargeButtom(
-                  color: CustomColor.purpleColor,
-                  text: 'CREAR CUENTA',
-                  outline: true,
-                  onPressed: () {},
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
